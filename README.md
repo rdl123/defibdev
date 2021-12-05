@@ -1,4 +1,4 @@
-Projet des formations por Himaya
+Projet des formations pour Himaya
 Based on the ngx-admin theme
 
 Contributors :

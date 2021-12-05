@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-
+import { ClientService } from '../../../services/client.service';
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { Client } from '../../../entities/Clients';
 
 @Component({
   selector: 'ngx-smart-table',
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
-
+export class ClientslistComponent {
+  Client : Client;
+  listclients : any;
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -30,36 +32,50 @@ export class SmartTableComponent {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
+      nom: {
         title: 'Last Name',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      prenom: {
+        title: 'First Name',
+        type: 'string',
+      },
+      cin: {
+        title: 'CIN',
+        type: 'string',
+      },
+      gsm: {
+        title: 'GSM',
         type: 'string',
       },
       email: {
-        title: 'E-mail',
+        title: 'Email',
         type: 'string',
       },
-      age: {
-        title: 'Age',
-        type: 'number',
+      ville: {
+        title: 'Ville',
+        type: 'string',
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableData,
+              private clientService : ClientService) {
+    this.Client = new Client();
     const data = this.service.getData();
+    //console.log(data);
     this.source.load(data);
   }
 
+  ngOnInit(){
+    this.clientService.findAllClients().subscribe( data =>{
+      this.listclients = data;
+      //console.log(this.listclients)
+      this.source.load(this.listclients);
+    })
+  }
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();

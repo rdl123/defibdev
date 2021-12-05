@@ -31,7 +31,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Clients',
-        link: '/pages/tables/smart-table',
+        link: '/pages/tables/clients-list',
       },
       {
         title: 'Formateurs',

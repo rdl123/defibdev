@@ -2,7 +2,8 @@ export class Client {
  id :number;
  nom : string;
  prenom : string;
- gms : string;
+ cin : string;
+ gsm : string;
  email : string;
  ville : string;
 }

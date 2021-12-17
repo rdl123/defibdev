@@ -25,6 +25,10 @@ export class ClientService {
      this.http.delete(API_URL + '/Client/delete/'+ id ).subscribe(() => console.log('Delete successful'));
   };
 
+  addClient(Client: Client) {
+    return this.http.post(API_URL + '/Client/add_Client', Client);
+  }
+
   
 
    

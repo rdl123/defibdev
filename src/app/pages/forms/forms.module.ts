@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
   NbActionsModule,
+  NbAlertModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
@@ -34,6 +35,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormsRoutingModule,
     NbSelectModule,
     NbIconModule,
+    NbAlertModule,
     ngFormsModule,
   ],
   declarations: [

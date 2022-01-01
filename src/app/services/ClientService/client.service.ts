@@ -29,6 +29,10 @@ export class ClientService {
     return this.http.post(API_URL + '/Client/add_Client', Client);
   }
 
+  editClient(Client: Client) {
+    return this.http.patch(API_URL+'/Client/update',Client);
+  }
+
   
 
    

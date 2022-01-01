@@ -22,6 +22,8 @@ export class ClientslistComponent {
   //   telephone: [null],
   //   secteurUser : [null]
   //   });
+  show_success:  boolean;
+  show_warning:  boolean;
   Client : Client;
   listclients : any;
   settings = {
@@ -77,12 +79,13 @@ export class ClientslistComponent {
 
   @ViewChild('table')
   smartTable: Ng2SmartTableComponent;
-  public editClient: any;
+  public editClient: Client;
   constructor(private service: SmartTableData,
               private clientService : ClientService,
               private router: Router,
               // private formBuilder: FormBuilder
               ) {
+    this.editClient = new Client();
     this.Client = new Client();
     const data = this.service.getData();
     //console.log(data);
@@ -129,13 +132,6 @@ export class ClientslistComponent {
     this.clientService.deleteClient(e.data.id);
   }
 
-  onEdit(e){
-    console.log(e.data);
-    this.Client = e.data;
-    this.clientService.clientSelected.next(e.data);
-    this.router.navigate(['/pages/tables/client-details']);
-  }
-
   public onOpenModal(e : any, mode : string){
     const container = document.getElementById('container')
     const button = document.createElement('button');
@@ -143,12 +139,34 @@ export class ClientslistComponent {
     button.style.display = 'none';
     button.setAttribute('data-toggle','modal');
     if (mode == 'edit'){
-      this.editClient = e.data;
+      this.editClient = e;
       button.setAttribute('data-target','#editClientModal');
     }
     container.appendChild(button);
     button.click();
 
+  }
+
+  Editer() {
+    //const myId = getUniqueId(1);
+   // this.Client.id = myId;
+    this.clientService.editClient(this.editClient).subscribe(
+      data => {
+             console.log(data);   
+      },
+      err => {
+        console.log(err.status)
+        if(err.status == 200){
+         this.show_success = true;
+         window.location.reload();
+        }
+        else{
+          this.show_warning= true;
+        }
+      }
+  
+    );
+   
   }
 
 }

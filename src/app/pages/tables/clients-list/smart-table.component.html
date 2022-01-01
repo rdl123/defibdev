@@ -14,38 +14,50 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee </h5>
+          <h5 class="modal-title" id="updateEmployeeModalLabel">Modifier les informations du client</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
        </div>
        <div class="modal-body">
+         <div *ngIf="show_success">
+            <nb-alert status="info" >Client Edited successfully !</nb-alert>
+         </div>
+         <div *ngIf="show_warning">
+           <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+        </div>
           <form >
              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-             </div>
-             <input type="hidden"  name="id" class="form-control" id="id" placeholder="Email">
-             <input type="hidden"  name="userCode" class="form-control" id="userCode" placeholder="Email">
-             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email"  name="email" class="form-control" id="email" placeholder="Email">
+                <label for="name">Nom</label>
+                <input  [(ngModel)]="editClient.nom" type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
              </div>
              <div class="form-group">
-                <label for="phone">Job title</label>
-                <input type="text"  name="jobTitle" class="form-control" id="jobTitle" placeholder="Job title">
+               <label for="name">Prénom</label>
+               <input  [(ngModel)]="editClient.prenom" type="text"  name="name" class="form-control" id="prenom"  placeholder="Prénom">
+            </div>
+             <div class="form-group">
+                <label for="email">Adresse mail</label>
+                <input type="email" [(ngModel)]="editClient.email"  name="email" class="form-control" aria-describedby="emailHelp" id="email" placeholder="Email">
              </div>
              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text"  name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                <label for="phone">CIN</label>
+                <input type="text" [(ngModel)]="editClient.cin"  name="jobTitle" class="form-control" id="CIN" placeholder="CIN">
              </div>
              <div class="form-group">
-                <label for="phone">Image URL</label>
-                <input type="text"  name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                <label for="phone">Téléphone</label>
+                <input type="text" [(ngModel)]="editClient.gsm"  name="phone" class="form-control" id="phone" name="phone" placeholder="Téléphone">
              </div>
+             <!-- <div class="form-group">
+                <label for="phone">Image</label>
+                <input type="text"  [(ngModel)]="editClient.nom" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+             </div> -->
+             <div class="form-group">
+               <label for="phone">Ville</label>
+               <input type="text"  [(ngModel)]="editClient.ville" name="imageUrl" class="form-control" id="Ville" placeholder="Ville">
+            </div>
              <div class="modal-footer">
-                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                <button  data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                <button  class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
              </div>
           </form>
        </div>

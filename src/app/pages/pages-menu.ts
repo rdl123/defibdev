@@ -7,7 +7,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Ajouter client',
-        link: '/pages/forms/inputs',
+        link: '/pages/forms/inputs-client',
       },
       {
         title: 'Ajouter formateur',
@@ -15,11 +15,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Ajouter formation',
-        link: '/pages/forms/inputs',
+        link: '/pages/forms/inputs-formation',
       },
       {
         title: 'Programmer une formation',
-        link: '/pages/forms/inputs',
+        link: '/pages/forms/inputs-subs',
       },
       
     ],
@@ -39,12 +39,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Formations disponibles',
-        link: '/pages/tables/tree-grid',
+        link: '/pages/tables/formations-list',
       },
       {
-        title: 'Formations programmées',
-        link: '/pages/tables/tree-grid',
-      }
+        title: 'Formations disponibles',
+        link: '/pages/tables/subscriptions-list',
+      },
     ],
   }
     ]

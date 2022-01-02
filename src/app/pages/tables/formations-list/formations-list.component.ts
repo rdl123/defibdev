@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Ng2SmartTableComponent,LocalDataSource } from 'ng2-smart-table';
-import { ClientService } from '../../../services/ClientService/client.service';
+
+import { FormationService } from '../../../services/FormationService/formation.service';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { Client } from '../../../entities/Clients';
 import { Router } from '@angular/router';
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
+import { Formation } from '../../../entities/Formation';
 // import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -12,7 +14,7 @@ import { Container } from '@angular/compiler/src/i18n/i18n_ast';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class ClientslistComponent {
+export class FormationslistComponent {
   // formData: FormGroup = this.formBuilder.group({
   //   username: [null],
   //   fullname: [null],
@@ -24,8 +26,9 @@ export class ClientslistComponent {
   //   });
   show_success:  boolean;
   show_warning:  boolean;
-  Client : Client;
-  listclients : any;
+  formation : Formation;
+  listFormations : any;
+  listFormationsformatted : any;
   settings = {
     mode: 'external',
     add: {
@@ -44,33 +47,21 @@ export class ClientslistComponent {
     },
     columns: {
       id: {
-        title: 'ID',
+        title: 'ID de la formation',
         type: 'number',
       },
       nom: {
-        title: 'Last Name',
+        title: 'Nom de la formation',
         type: 'string',
       },
-      prenom: {
-        title: 'First Name',
+      categorie : {
+        title: 'Categorie de la formation',
         type: 'string',
       },
-      cin: {
-        title: 'CIN',
+      description: {
+        title: 'Description',
         type: 'string',
-      },
-      gsm: {
-        title: 'GSM',
-        type: 'string',
-      },
-      email: {
-        title: 'Email',
-        type: 'string',
-      },
-      ville: {
-        title: 'Ville',
-        type: 'string',
-      },
+      }
     },
   };
     
@@ -79,24 +70,26 @@ export class ClientslistComponent {
 
   @ViewChild('table')
   smartTable: Ng2SmartTableComponent;
-  public editClient: Client;
+  public editFormation: Formation;
   constructor(private service: SmartTableData,
-              private clientService : ClientService,
+              private formationService : FormationService,
               private router: Router,
               // private formBuilder: FormBuilder
               ) {
-    this.editClient = new Client();
-    this.Client = new Client();
+    this.editFormation = new Formation();
+    this.formation = new Formation();
     const data = this.service.getData();
     //console.log(data);
     this.source.load(data);
   }
 
   ngOnInit(){
-    this.clientService.findAllClients().subscribe( data =>{
-      this.listclients = data;
-      //console.log(this.listclients)
-      this.source.load(this.listclients);
+    this.formationService.findAllFormations().subscribe( data =>{
+      console.log(data);
+      this.listFormationsformatted = data;
+      this.listFormations = data;
+      this.listFormationsformatted.forEach(item => item.categorie = item.categorie.nom);
+      this.source.load(this.listFormationsformatted);
     })
   }
   // ngAfterViewInit(): void {
@@ -124,12 +117,13 @@ export class ClientslistComponent {
   }
   onCreate(e){
     console.log("add cusomized");
-    this.router.navigateByUrl('/pages/forms/inputs-client');
+    this.router.navigateByUrl('/pages/forms/inputs-formation');
   }
   onDelete(e){
     console.log("delete clicked");
     console.log(e.data.id); 
-    this.clientService.deleteClient(e.data.id);
+    this.formationService.deleteFormation(e.data.id);
+    window.location.reload();
   }
 
   public onOpenModal(e : any, mode : string){
@@ -139,8 +133,8 @@ export class ClientslistComponent {
     button.style.display = 'none';
     button.setAttribute('data-toggle','modal');
     if (mode == 'edit'){
-      this.editClient = e;
-      button.setAttribute('data-target','#editClientModal');
+      this.editFormation = e;
+      button.setAttribute('data-target','#editFormationModal');
     }
     container.appendChild(button);
     button.click();
@@ -148,22 +142,23 @@ export class ClientslistComponent {
   }
 
   Editer() {
-    //const myId = getUniqueId(1);
-   // this.Client.id = myId;
-    this.clientService.editClient(this.editClient).subscribe(
-      data => {
-             console.log(data);   
-      },
-      err => {
-        console.log(err.status)
-        if(err.status == 200){
-         this.show_success = true;
-         window.location.reload();
-        }
+    var oldcategorie = this.editFormation.categorie ;
+    this.editFormation.categorie = null;
+     this.formationService.editFormation(this.editFormation).subscribe(
+       data => {
+              console.log(data);   
+       },
+       err => {
+        this.editFormation.categorie = oldcategorie;
+         console.log(err.status)
+       if(err.status == 200){
+          this.show_success = true;
+          window.location.reload();
+         }
         else{
-          this.show_warning= true;
-        }
-      }
+           this.show_warning= true;
+         }
+       }
   
     );
    

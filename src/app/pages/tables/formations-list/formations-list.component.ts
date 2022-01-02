@@ -7,6 +7,7 @@ import { Client } from '../../../entities/Clients';
 import { Router } from '@angular/router';
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { Formation } from '../../../entities/Formation';
+import { ngxCsv } from 'ngx-csv';
 // import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -163,5 +164,22 @@ export class FormationslistComponent {
     );
    
   }
+
+  DownloadData() {
+    var options = { 
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  decimalseparator: '.',
+  showLabels: true, 
+  showTitle: true,
+  title: 'Rapport des clients',
+  useBom: true,
+  noDownload: false,
+  headers: ["Identifient","Nom de la formation", "Catégorie", "Description"]
+};
+
+new ngxCsv(this.listFormationsformatted,"Rapport",options);
+
+}
 
 }

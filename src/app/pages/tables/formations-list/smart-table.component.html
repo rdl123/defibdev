@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-header>
+    Liste des formations
+  </nb-card-header>
+
+  <nb-card-body id = "container">
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"  (edit) = "onOpenModal($event.data,'edit')" >
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+<!-- <ngx-client-details  [data]="Client"></ngx-client-details> -->
+<!-- Edit Modal -->
+<div class="modal fade" id="editFormationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="updateEmployeeModalLabel">Modifier les informations de la formation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+         <div *ngIf="show_success">
+            <nb-alert status="info" >Formation Edited successfully !</nb-alert>
+         </div>
+         <div *ngIf="show_warning">
+           <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+        </div>
+          <form >
+             <div class="form-group">
+                <label for="name">Nom de la formation</label>
+                <input  [(ngModel)]="editFormation.nom" type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+             </div>
+             <div class="form-group">
+               <label for="name">Cataégorie de la formation</label>
+               <input  [(ngModel)]="editFormation.categorie " type="text"  name="cat" class="form-control" id="cat"  placeholder="Cataégorie">
+            </div>
+             <div class="form-group">
+                <label for="email">Description de la formation</label>
+                <input type="email" [(ngModel)]="editFormation.description "  name="desc" class="form-control"  id="email" placeholder="Description">
+             </div>
+           
+             <div class="modal-footer">
+                  <button style ="margin-right : 10%" type="button" id="" data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                  <button style ="margin-left   : 10%" class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+             </div>
+          </form>
+       </div>
+    </div>
+ </div>
+</div>

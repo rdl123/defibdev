@@ -1,0 +1,98 @@
+<nb-card>
+  <nb-card-header>
+    Liste des formations à venir
+  </nb-card-header>
+
+  <nb-card-body id = "container">
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"  (edit) = "opnDialog(dialog,$event.data)" >
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+
+<ng-template class="card model-full"  #dialog let-data let-ref="dialogRef">
+   <div >
+   <nb-card class="modal-body">
+     <nb-card-header>Formation programmée</nb-card-header>
+     
+      <div *ngIf="show_success">
+         <nb-alert status="info" >Subscription Edited successfully !</nb-alert>
+      </div>
+      <div *ngIf="show_warning">
+        <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+      </div>
+      <br/>
+       <form >
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+             <label for="name">Nom du client</label>
+             <input  [(ngModel)]="editSubscription.client" type="text"  name="client" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+          </div>
+        </div>
+        <br/>
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+              <label for="name">Nom de la formation</label>
+              <input  [(ngModel)]="editSubscription.formation" type="text"  name="formation" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+           </div>
+          </div>
+          <br/>
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+              <label for="name">Nom du formateur</label>
+              <input [readonly]= "true"  [(ngModel)]="editSubscription.formateur" type="text"  name="formateur" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+          </div>
+          <div class="col-6 col-md-4">
+            <div style ="margin-top: 26px;">
+              <nb-select placeholder="Changer le formateur" [(selected)]="selectedFormateurid" (selectedChange)="onMenuItemSelected($event)">
+              <nb-option
+                *ngFor="let option of listformateurs"
+                value="{{ option.id }}">
+                {{ option.nom }} {{ option.prenom }}
+              </nb-option>
+              </nb-select>
+          </div>
+          </div>
+        </div>
+        <br/>
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+              <label for="name">date de debut</label>
+              <input  [readonly]= "true" [(ngModel)]="editSubscription.date_debut" type="text"  name="cat" class="form-control" id="cat"  placeholder="Date de début">
+          </div>
+          <div class="col-6 col-md-4">
+          <div style ="margin-top: 26px;" >
+            <input nbInput
+            placeholder="Changer la date de début"
+            [nbDatepicker]="formpicker">
+          <nb-datepicker #formpicker (dateChange)="onStartDateChanged($event)"></nb-datepicker>
+          </div>  
+          </div>
+        </div>
+
+        <br/>
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+            <label for="email">Date de fin</label>
+            <input [readonly]= "true"  type="email" [(ngModel)]="editSubscription.date_fin "  name="desc" class="form-control"  id="email" placeholder="Description">
+          </div>
+          <div class="col-6 col-md-4">
+          <div style ="margin-top: 26px;" >
+            <input nbInput
+            placeholder="Changer la date de fin"
+            [nbDatepicker]="formpicker2">
+          <nb-datepicker #formpicker2 (dateChange)="onendDateChanged($event)"></nb-datepicker>
+          </div>  
+          </div>
+        </div>
+        
+       </form>
+    <br/>
+     <nb-card-footer>
+       <button nbButton (click)="ref.close()">Fermer</button>
+       <button style ="margin-left: 2%" class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+     </nb-card-footer>
+   </nb-card>
+</div>
+ </ng-template>
+

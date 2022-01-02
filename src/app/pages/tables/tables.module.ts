@@ -15,7 +15,15 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import {
+  NbChatModule,
+  NbDialogModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbToastrModule,
+  NbWindowModule,
+} from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -33,7 +41,8 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     ThemeModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
-    ngFormsModule
+    FormsModule,
+    NbDialogModule,
     // FormGroup,
     // FormBuilder
   ],

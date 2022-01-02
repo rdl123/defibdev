@@ -1,0 +1,63 @@
+<div class="steppers-container row">
+<nb-card style = "padding-top:30px;" class="col-md-12 col-lg-12 col-xxxl-12">
+  <nb-card-body>
+    <nb-stepper orientation="horizontal">
+      <nb-step [label]="labelOne">
+        <ng-template #labelOne>Choisir une formation</ng-template>
+        <nb-select placeholder="Choisissez une formation" (selectedChange)="onformationSelected($event)">
+          <nb-option *ngFor="let option of listformation" value="{{ option.id }}">
+            {{ option.nom }}
+          </nb-option>
+        </nb-select>
+        <br/>
+        <button nbButton disabled nbStepperNext>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step [label]="labelTwo">
+        <ng-template #labelTwo>Choisir un formateur</ng-template>
+        <nb-select placeholder="Choisissez un formateur" (selectedChange)="onformateurSelected($event)">
+          <nb-option *ngFor="let option of listformateurs" value="{{ option.id }}">
+            {{ option.nom }}
+          </nb-option>
+        </nb-select>
+        <br/>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step label="Chosiir un client">
+        <nb-select placeholder="Choisissez le client" (selectedChange)="onclientSelected($event)">
+          <nb-option *ngFor="let option of listclients" value="{{ option.id }}">
+            {{ option.nom }}
+          </nb-option>
+        </nb-select>
+        <br/>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step [label]="labelFour">
+        <ng-template #labelFour>Choisir la date de début</ng-template>
+        <div style ="margin-top: 26px;" >
+          <input nbInput
+          placeholder="Changer la date de début"
+          [nbDatepicker]="formpicker">
+        <nb-datepicker #formpicker (dateChange)="onStartDateChanged($event)"></nb-datepicker>
+        </div>  
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton  nbStepperNext>next</button>
+      </nb-step>
+      <nb-step [label]="labelFive">
+        <ng-template #labelFive>Choisir la date de fin</ng-template>
+        <div style ="margin-top: 26px;" >
+          <input nbInput
+          placeholder="Changer la date de fin"
+          [nbDatepicker]="formpicker2">
+        <nb-datepicker #formpicker2 (dateChange)="onEndDateChanged($event)"></nb-datepicker>
+        </div>  
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton disabled nbStepperNext>next</button>
+        <button type="submit" class="btn btn-primary" (click)="add()"> Programmer ma formation </button>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>
+</div>

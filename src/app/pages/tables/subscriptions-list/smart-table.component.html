@@ -6,6 +6,8 @@
   <nb-card-body id = "container">
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"  (edit) = "opnDialog(dialog,$event.data)" >
     </ng2-smart-table>
+    <br/>
+    <button  class="btn btn-success" (click)="DownloadData()" >Télecharger le rapport</button>
   </nb-card-body>
 </nb-card>
 

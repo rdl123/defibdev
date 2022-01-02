@@ -42,7 +42,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/tables/formations-list',
       },
       {
-        title: 'Formations disponibles',
+        title: 'Formations programmées',
         link: '/pages/tables/subscriptions-list',
       },
     ],

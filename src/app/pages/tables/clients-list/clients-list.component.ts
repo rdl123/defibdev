@@ -5,6 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { Client } from '../../../entities/Clients';
 import { Router } from '@angular/router';
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 // import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -166,6 +167,23 @@ export class ClientslistComponent {
       }
   
     );
+   
+  }
+
+  DownloadData() {
+        var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: 'Rapport des clients',
+      useBom: true,
+      noDownload: false,
+      headers: ["Identifient","Nom", "Prénom", "CIN", "GSM","Email"]
+    };
+
+    new ngxCsv(this.listclients,"Rapport",options);
    
   }
 

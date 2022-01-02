@@ -11,6 +11,7 @@ import { Subscription } from '../../../entities/Subscription';
 import { SubscriptionService } from '../../../services/SubscriptionService/subscription.service';
 import { NbDateService, NbDialogRef,NbDialogService  } from '@nebular/theme';
 import { FormateurService } from '../../../services/FormateurService/formateur.service';
+import { ngxCsv } from 'ngx-csv';
 
 
 // import { FormBuilder, FormGroup } from '@angular/forms';
@@ -252,7 +253,24 @@ export class SubscriptionslistComponent {
        }
   
     );
-   
+  
   }
+
+  
+  DownloadData() {
+    var options = { 
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  decimalseparator: '.',
+  showLabels: true, 
+  showTitle: true,
+  title: 'Rapport des clients',
+  useBom: true,
+  noDownload: false,
+  headers: ["Identifient","Nom de la formation", "Date de début", "Date de fin", "Client","Formateur"]
+};
+
+new ngxCsv(this.listsubscriptionsformatted,"Rapport",options);
+}
 
 }

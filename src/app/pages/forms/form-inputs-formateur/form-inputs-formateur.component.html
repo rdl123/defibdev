@@ -1,11 +1,11 @@
 <nb-card>
-    <nb-card-header>AJOUTER Formateur</nb-card-header>
+    <nb-card-header>Ajouter un formateur</nb-card-header>
     <nb-card-body>
        
        
 
         <div *ngIf="show_success">
-           <nb-alert status="info" >Formateur added successfully !</nb-alert>
+           <nb-alert status="info" >Formateur ajouté avec succes !</nb-alert>
         </div>
         <div *ngIf="show_warning">
           <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
@@ -18,12 +18,20 @@
         <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="Formateur.gsm">
         <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="Formateur.cin">
         <input type="text" nbInput fullWidth  shape="round" placeholder="VILLE" [(ngModel)]="Formateur.ville">
-        <input
-        style="display: none"
-        type="file" (change)="onFileChanged($event)"
-        #fileInput>
-        <button (click)="fileInput.click()" class="btn btn-primary" [(ngModel)]="Formateur.photo">Select Image</button>
-        <button type="submit" class="btn btn-primary" (click)="add()" > Ajouter </button>
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        <div *ngIf="!selectedFile" >
+          <button style="margin-right: 15px;" (click)="fileInput.click()" class="btn btn-outline-primary" [(ngModel)]="Formateur.photo">Ajouter la photo</button>
+          <button type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
+        </div>
+        <div *ngIf="selectedFile" >
+          <button style="margin-right: 15px;" (click)="fileInput.click()" class="btn btn-secondary" [(ngModel)]="Formateur.photo" >Ajouter la photo</button>
+          <img *ngIf="selectedFile" [src]="imgURL" height="200">
+          <br>
+          <button style="margin-left: 90%;" type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
+        </div>
+        
+        
+        
   
        
       

@@ -1,5 +1,4 @@
 export class Formateur { 
- id :number;
  nom : string;
  prenom : string;
  cin : string;

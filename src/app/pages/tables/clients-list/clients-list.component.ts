@@ -72,6 +72,10 @@ export class ClientslistComponent {
         title: 'Ville',
         type: 'string',
       },
+      adresse: {
+        title: 'Adresse',
+        type: 'string',
+      },
     },
   };
     

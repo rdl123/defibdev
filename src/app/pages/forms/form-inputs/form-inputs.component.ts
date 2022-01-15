@@ -2,7 +2,6 @@ import { Component, ComponentFactoryResolver } from '@angular/core';
 import { Client } from '../../../entities/Clients';
 
 import { ClientService } from '../../../services/ClientService/client.service';
-import { getUniqueId } from '../../../services/helpers/Id_genertor';
 
 @Component({
   selector: 'ngx-form-inputs',
@@ -25,8 +24,6 @@ export class FormInputsComponent{
  
 
 add() {
-  const myId = getUniqueId(1);
-  this.Client.id = myId;
   this.clientService.addClient(this.Client).subscribe(
     data => {
            console.log(data);

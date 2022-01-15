@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Ng2SmartTableComponent,LocalDataSource } from 'ng2-smart-table';
 import { FormateurService } from '../../../services/FormateurService/formateur.service';
+import { FileService } from '../../../services/FiIeUploadService/file.service';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { Formateur } from '../../../entities/Formateur';
 import { Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class FormateurListComponent   {
   show_warning:  boolean;
   Formateur: Formateur;
   listformateurs : any;
+  imgUrl : any;
   settings = {
     mode: 'external',
     add: {
@@ -74,6 +76,7 @@ export class FormateurListComponent   {
   public editFormateur: Formateur;
   constructor(private service: SmartTableData,
               private formateurService : FormateurService,
+              private fileService : FileService,
               private router: Router,
               // private formBuilder: FormBuilder
               ) {
@@ -117,6 +120,9 @@ export class FormateurListComponent   {
     button.setAttribute('data-toggle','modal');
     if (mode == 'edit'){
       this.editFormateur = e;
+      this.fileService.getFormateur64file(this.editFormateur.photo).subscribe( data =>{
+        this.imgUrl = "data:image/png;base64," + data;
+      })
       button.setAttribute('data-target','#editFormateurModal');
     }
     container.appendChild(button);

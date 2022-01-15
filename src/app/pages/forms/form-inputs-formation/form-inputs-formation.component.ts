@@ -3,7 +3,6 @@ import { Client } from '../../../entities/Clients';
 import { Formation } from '../../../entities/Formation';
 
 import { ClientService } from '../../../services/ClientService/client.service';
-import { getUniqueId } from '../../../services/helpers/Id_genertor';
 import { FormationService } from '../../../services/FormationService/formation.service';
 import { CategorieService } from '../../../services/CategorieService/categorie.service';
 
@@ -27,31 +26,25 @@ export class FormInputsFormationComponent{
 
 ngOnInit(){
   this.categorieService.findAllCategories().subscribe( data =>{
-    console.log(data);
     this.listcategorie = data;
   })
 }
-add() {
-  const myId = getUniqueId(1);
-  this.formation.id = myId;
+
+onCategorieSelected(e){
+ 
+  this.formation.categorie = this.listcategorie.filter(arg =>arg.id == e)[0];
+  console.log( this.formation.categorie)
+
+}
+add() { 
   this.formationService.addFormation(this.formation).subscribe(
     data => {
-           console.log(data);
+      this.show_success = true;
          
     },
     err => {
-      console.log(err.status)
-      if(err.status == 200){
    
-       this.show_success = true;
-     
-
-      }
-      else{
         this.show_warning= true;
-       
-
-      }
     }
 
   );

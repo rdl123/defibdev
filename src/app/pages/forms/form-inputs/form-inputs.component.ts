@@ -21,30 +21,20 @@ export class FormInputsComponent{
 }
 
 
- 
+
 
 add() {
   this.clientService.addClient(this.Client).subscribe(
     data => {
-           console.log(data);
+      this.show_success = true;
          
     },
-    err => {
-      console.log(err.status)
-      if(err.status == 200){
-   
-       this.show_success = true;
-     
-
-      }
-      else{
+    err => 
+      {
         this.show_warning= true;
        
 
-      }
-    }
-
-  );
+      } );
  
 }
 

@@ -4,7 +4,7 @@
   </nb-card-header>
 
   <nb-card-body id = "container">
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"  (edit) = "onOpenModal($event.data,'edit')" >
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"(edit) = "opnDialog(dialog,$event.data)"  >
     </ng2-smart-table>
     <br/>
     <button  class="btn btn-success" (click)="DownloadData()" >Télecharger le rapport</button>
@@ -12,42 +12,58 @@
 </nb-card>
 <!-- <ngx-client-details  [data]="Client"></ngx-client-details> -->
 <!-- Edit Modal -->
-<div class="modal fade" id="editFormationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-       <div class="modal-header">
-          <h5 class="modal-title" id="updateEmployeeModalLabel">Modifier les informations de la formation</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-       </div>
-       <div class="modal-body">
-         <div *ngIf="show_success">
-            <nb-alert status="info" >Formation Edited successfully !</nb-alert>
-         </div>
-         <div *ngIf="show_warning">
-           <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
-        </div>
-          <form >
-             <div class="form-group">
-                <label for="name">Nom de la formation</label>
-                <input  [(ngModel)]="editFormation.nom" type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
-             </div>
-             <div class="form-group">
-               <label for="name">Cataégorie de la formation</label>
-               <input  [(ngModel)]="editFormation.categorie " type="text"  name="cat" class="form-control" id="cat"  placeholder="Cataégorie">
-            </div>
-             <div class="form-group">
-                <label for="email">Description de la formation</label>
-                <input type="email" [(ngModel)]="editFormation.description "  name="desc" class="form-control"  id="email" placeholder="Description">
-             </div>
-           
-             <div class="modal-footer">
-                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Fermer</button>
-                <button  class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
-             </div>
-          </form>
-       </div>
+<ng-template class="card model-full"  #dialog let-data let-ref="dialogRef">
+   <div >
+   <nb-card class="modal-body">
+     <nb-card-header>Formation programmée</nb-card-header>
+     
+     <div *ngIf="show_success">
+       <nb-alert status="info" >Formation Edited successfully !</nb-alert>
     </div>
- </div>
+    <div *ngIf="show_warning">
+      <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+   </div>
+      <br/>
+       <form >
+           <div class="form-group">
+               <label for="name">Nom de la formation</label>
+               <input  [(ngModel)]="editFormation.nom" type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+            </div>
+           
+        <br/>
+        <div class="form-group">
+           <label for="email">Description de la formation</label>
+               <input type="email" [(ngModel)]="editFormation.description "  name="desc" class="form-control"  id="email" placeholder="Description">
+        </div>
+       
+    <br/>
+        <div  class="row show-grid">
+          <div class="col-12 col-md-8">
+           <label for="name">Catégorie de la formation</label>
+             <input [readonly]= "true" type="email" [(ngModel)]="editFormation.categorie "  name="desc" class="form-control"  id="email" placeholder="Categorie">
+          </div>
+          <div class="col-6 col-md-4">
+            <div style ="margin-top: 26px;">
+    
+               <nb-select placeholder="Changer le Catégorie" [(selected)]="selectedCategorieid" (selectedChange)="onMenuItemSelected($event)">
+                  <nb-option
+                    *ngFor="let option of listCategorie"
+                    value="{{ option.id }}">
+                    {{ option.nom }}
+                  </nb-option>
+                  </nb-select>
+          </div>
+          </div>
+        </div>
+       
+       
+        
+       </form>
+    <br/>
+     <nb-card-footer>
+       <button nbButton (click)="ref.close()">Fermer</button>
+       <button style ="margin-left: 2%" class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+     </nb-card-footer>
+   </nb-card>
 </div>
+ </ng-template>

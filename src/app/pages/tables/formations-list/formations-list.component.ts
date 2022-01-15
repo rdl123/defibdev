@@ -1,12 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,TemplateRef } from '@angular/core';
 import { Ng2SmartTableComponent,LocalDataSource } from 'ng2-smart-table';
 
 import { FormationService } from '../../../services/FormationService/formation.service';
+import { CategorieService } from '../../../services/CategorieService/Categorie.service';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { Client } from '../../../entities/Clients';
 import { Router } from '@angular/router';
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { Formation } from '../../../entities/Formation';
+import { NbDateService, NbDialogRef,NbDialogService  } from '@nebular/theme';
 import { ngxCsv } from 'ngx-csv';
 // import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -28,7 +30,10 @@ export class FormationslistComponent {
   show_success:  boolean;
   show_warning:  boolean;
   formation : Formation;
+  NewCategorievalue = null;
+  listCategorie: any;
   listFormations : any;
+  selectedCategorieid = 1;
   listFormationsformatted : any;
   settings = {
     mode: 'external',
@@ -74,6 +79,8 @@ export class FormationslistComponent {
   public editFormation: Formation;
   constructor(private service: SmartTableData,
               private formationService : FormationService,
+              private categorieService : CategorieService,
+              private dialogService: NbDialogService,
               private router: Router,
               // private formBuilder: FormBuilder
               ) {
@@ -85,6 +92,11 @@ export class FormationslistComponent {
   }
 
   ngOnInit(){
+
+    this.categorieService.findAllCategories().subscribe(data => {
+      console.log(data)
+      this.listCategorie = data;
+    });
     this.formationService.findAllFormations().subscribe( data =>{
       console.log(data);
       this.listFormationsformatted = data;
@@ -93,22 +105,20 @@ export class FormationslistComponent {
       this.source.load(this.listFormationsformatted);
     })
   }
-  // ngAfterViewInit(): void {
-  //   console.log('Values on ngAfterViewInit():');
-  //   this.smartTable.edit.subscribe( (dataObject: any) => {
-  //     console.log('Edit');
-  //     console.log(dataObject);
-  //   });
-  //   this.smartTable.delete.subscribe( (dataObject: any) => {
-  //     console.log('Delete');
-  //     console.log(dataObject);
-  //   });
-  //   this.smartTable.create.subscribe( (dataObject: any) => {
-  //     console.log('Create');
-  //     console.log(dataObject);
-  //   });
-  // }
+  public opnDialog(dialog: TemplateRef<any> , e : any,){
 
+    this.editFormation =e;
+    const dialogRef = this.dialogService.open(dialog, {
+      context: {
+        title: 'Enter template name',
+        myObject: e,
+      }, dialogClass: 'model-full'
+    })
+    dialogRef.onClose.subscribe((resp) => {
+      console.log(`dialog closed`);
+      console.log(resp);
+    });
+  }
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
@@ -141,7 +151,9 @@ export class FormationslistComponent {
     button.click();
 
   }
-
+  onMenuItemSelected(e){
+    this.NewCategorievalue = e;
+  }
   Editer() {
     var oldcategorie = this.editFormation.categorie ;
     this.editFormation.categorie = null;

@@ -21,6 +21,8 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   bootstrap: [AppComponent],
 })

@@ -14,8 +14,8 @@
          
        
           <input type="text" nbInput fullWidth shape="round" placeholder="Nom" [(ngModel)]="formation.nom">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="Description" [(ngModel)]="formation.description">
-          <nb-select selected="1"  >
+          <input type="text" nbInput fullWidth  shape="round" placeholder="Description" [(ngModel)]="formation.description" >
+          <nb-select selected="1"  (selectedChange)="onCategorieSelected($event)" >
             <nb-option
             *ngFor="let option of listcategorie"
              value="{{ option.id }}">

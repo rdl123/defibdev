@@ -24,7 +24,6 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-
 @NgModule({
   imports: [
     NbActionsModule,
@@ -50,6 +49,7 @@ import {
     ...routedComponents,
     FsIconComponent,
     ClientDetailsComponent,
+    
   ],
 })
 export class TablesModule { }

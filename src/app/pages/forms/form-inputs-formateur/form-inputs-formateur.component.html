@@ -1,0 +1,34 @@
+<nb-card>
+    <nb-card-header>AJOUTER Formateur</nb-card-header>
+    <nb-card-body>
+       
+       
+
+        <div *ngIf="show_success">
+           <nb-alert status="info" >Formateur added successfully !</nb-alert>
+        </div>
+        <div *ngIf="show_warning">
+          <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+       </div>
+       
+     
+        <input type="text" nbInput fullWidth shape="round" placeholder="NOM" [(ngModel)]="Formateur.nom">
+        <input type="text" nbInput fullWidth shape="round" placeholder="PRENOM" [(ngModel)]="Formateur.prenom">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="EMAIL" [(ngModel)]="Formateur.email">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="Formateur.gsm">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="Formateur.cin">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="VILLE" [(ngModel)]="Formateur.ville">
+        <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+        <button (click)="fileInput.click()" class="btn btn-primary" [(ngModel)]="Formateur.photo">Select Image</button>
+        <button type="submit" class="btn btn-primary" (click)="add()" > Ajouter </button>
+  
+       
+      
+     
+    </nb-card-body>
+   
+
+  </nb-card>

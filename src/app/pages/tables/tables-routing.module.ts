@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TablesComponent } from './tables.component';
 import { ClientslistComponent } from './clients-list/clients-list.component';
 import { FormationslistComponent } from './formations-list/formations-list.component';
+import { FormateurListComponent } from './formateur-list/formateur-list.component';
 import { SubscriptionslistComponent } from './subscriptions-list/subscriptions-list.component';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
@@ -24,6 +25,10 @@ const routes: Routes = [{
       path: 'formations-list',
       component: FormationslistComponent,
     },
+     {
+      path: 'formateur-list',
+      component: FormateurListComponent,
+    },
     {
       path: 'subscriptions-list',
       component: SubscriptionslistComponent,
@@ -42,6 +47,7 @@ export const routedComponents = [
   ClientslistComponent,
   ClientDetailsComponent,
   TreeGridComponent,
+  FormateurListComponent,
   FormationslistComponent,
   SubscriptionslistComponent
 ];

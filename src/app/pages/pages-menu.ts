@@ -11,7 +11,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Ajouter formateur',
-        link: '/pages/forms/inputs',
+        link: '/pages/forms/inputs-formateur',
       },
       {
         title: 'Ajouter formation',
@@ -35,12 +35,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Formateurs',
-        link: '/pages/tables/tree-grid',
+        link: '/pages/tables/formateur-list',
       },
       {
         title: 'Formations disponibles',
         link: '/pages/tables/formations-list',
       },
+      
       {
         title: 'Formations programmées',
         link: '/pages/tables/subscriptions-list',

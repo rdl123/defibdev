@@ -20,4 +20,16 @@ export class FormateurService {
     return this.http.get(API_URL + '/Formateur/find/all' );
 
    }
+
+   deleteFormateur(id : string) {
+     this.http.delete(API_URL + '/Formateur/delete/'+ id ).subscribe(() => console.log('Delete successful'));
+  };
+
+    editFormateur(Formateur: Formateur) {
+    return this.http.patch(API_URL+'/Formateur/update',Formateur);
+  }
+
+   addFormateur(Formateur: Formateur) {
+    return this.http.post(API_URL + '/Formateur/add_formateur', Formateur);
+  }
 }

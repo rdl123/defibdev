@@ -23,6 +23,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import {NbStepperModule} from '@nebular/theme';
+import { FormInputsFormateurComponent } from './form-inputs-formateur/form-inputs-formateur.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import {NbStepperModule} from '@nebular/theme';
     FormInputsSubsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
+    FormInputsFormateurComponent,
   ],
 })
 export class FormsModule { }

@@ -1,0 +1,35 @@
+<nb-card>
+    <nb-card-header>Ajouter un responsable</nb-card-header>
+    <nb-card-body>
+       
+       
+
+        <div *ngIf="show_success">
+           <nb-alert status="info" >Responsable ajouté avec succes !</nb-alert>
+        </div>
+        <div *ngIf="show_warning">
+          <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+       </div>
+       
+     
+        <input type="text" nbInput fullWidth shape="round" placeholder="NOM" [(ngModel)]="responsable.nom">
+        <input type="text" nbInput fullWidth shape="round" placeholder="PRENOM" [(ngModel)]="responsable.prenom">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="EMAIL" [(ngModel)]="responsable.email">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="responsable.gsm">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="responsable.cin">
+        <input type="text" nbInput fullWidth  shape="round" placeholder="VILLE" [(ngModel)]="responsable.ville">
+
+          <br>
+          <button style="margin-left: 90%;" type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
+
+        
+        
+        
+  
+       
+      
+     
+    </nb-card-body>
+   
+
+  </nb-card>

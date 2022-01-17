@@ -1,0 +1,70 @@
+<nb-card>
+    <nb-card-header>
+      Liste des Responsables
+    </nb-card-header>
+  
+    <nb-card-body id = "container">
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (create) = "onCreate($event)" (delete) = "onDelete($event)"  (edit) = "onOpenModal($event.data,'edit')" >
+      </ng2-smart-table>
+      <br/>
+      <button  class="btn btn-success" (click)="DownloadData()" >Télecharger le rapport</button>
+    </nb-card-body>
+  </nb-card>
+  <!-- <ngx-client-details  [data]="Client"></ngx-client-details> -->
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editFormateurModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="updateEmployeeModalLabel">Modifier les informations du Reponsable</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+           <div *ngIf="show_success">
+              <nb-alert status="info" >Responsable Edited successfully !</nb-alert>
+           </div>
+           <div *ngIf="show_warning">
+             <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+          </div>
+            <form >
+
+               <div class="form-group">
+                  <label for="name">Nom</label>
+                  <input  [(ngModel)]="editResponsable.nom" type="text"  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+               </div>
+               <div class="form-group">
+                 <label for="name">Prénom</label>
+                 <input  [(ngModel)]="editResponsable.prenom" type="text"  name="prenom" class="form-control" id="prenom"  placeholder="Prénom">
+              </div>
+               <div class="form-group">
+                  <label for="email">Adresse mail</label>
+                  <input type="email" [(ngModel)]="editResponsable.email"  name="email" class="form-control" aria-describedby="emailHelp" id="email" placeholder="Email">
+               </div>
+               <div class="form-group">
+                  <label for="phone">CIN</label>
+                  <input type="text" [(ngModel)]="editResponsable.cin"  name="jobTitle" class="form-control" id="CIN" placeholder="CIN">
+               </div>
+               <div class="form-group">
+                  <label for="phone">Téléphone</label>
+                  <input type="text" [(ngModel)]="editResponsable.gsm"  name="phone" class="form-control" id="phone" name="phone" placeholder="Téléphone">
+               </div>
+               <!-- <div class="form-group">
+                  <label for="phone">Image</label>
+                  <input type="text"  [(ngModel)]="editClient.nom" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+               </div> -->
+               <div class="form-group">
+                 <label for="phone">Ville</label>
+                 <input type="text"  [(ngModel)]="editResponsable.ville" name="imageUrl" class="form-control" id="Ville" placeholder="Ville">
+              </div>
+               <div class="modal-footer">
+                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                  <button  class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+  </div>
+  

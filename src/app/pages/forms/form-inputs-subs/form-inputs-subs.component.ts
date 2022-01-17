@@ -9,6 +9,7 @@ import { FormationService } from '../../../services/FormationService/formation.s
 import { CategorieService } from '../../../services/CategorieService/categorie.service';
 import { FormateurService } from '../../../services/FormateurService/formateur.service';
 import { SubscriptionService } from '../../../services/SubscriptionService/subscription.service';
+import { ResponsableService } from '../../../services/ResponsableService/responsable.service';
 
 @Component({
   selector: 'ngx-form-inputs',
@@ -22,6 +23,7 @@ export class FormInputsSubsComponent{
     listformation : any;
     listclients : any;
     listformateurs : any;
+    listresponsables : any;
     NewDateStart = null;
     NewDateEnd = null;
     formation: Formation;
@@ -33,6 +35,7 @@ export class FormInputsSubsComponent{
                private clientService : ClientService,
                private formateurService : FormateurService,
                private subscriptionService : SubscriptionService,
+               private responsableService : ResponsableService
                ) {
           this.formation = new Formation();
           this.subscrption = new Subscription();
@@ -48,6 +51,9 @@ ngOnInit(){
   this.formationService.findAllFormations().subscribe(data =>{
     this.listformation = data;
   })
+  this.responsableService.findAllResponsables().subscribe(data =>{
+    this.listresponsables = data;
+  })
 
 }
 onformationSelected(e){
@@ -60,6 +66,9 @@ onformateurSelected(e){
 }
 onclientSelected(e){
   this.subscrption.client = this.listclients.filter(arg =>arg.id == e)[0];
+}
+onresponsableSelected(e){
+  this.subscrption.responsable = this.listresponsables.filter(arg =>arg.id == e)[0];
 }
 onStartDateChanged(e){
   this.NewDateStart = e.toISOString().split('T')[0];

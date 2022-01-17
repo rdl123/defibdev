@@ -23,6 +23,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import {SubscriptionService} from '../../../services/SubscriptionService/subscription.service';
+import { title } from 'process';
  
 const colors: any = {
   red: {
@@ -68,8 +69,7 @@ export class DemoComponent {
   eventList: CalendarEvent[] = [];
 
   modalData: {
-    action: string;
-    event: CalendarEvent;
+    data: any;
   };
  
   actions: CalendarEventAction[] = [
@@ -113,10 +113,11 @@ export class DemoComponent {
   setEvents(){
 
     this.listsubscriptions.map(item => {
+      var titre : string = item.id + ' - ' + item.formation.nom;
       this.eventList.push( {
         start: subDays(startOfDay(new Date()), 1),
         end: addDays(new Date(), 1),
-        title: item.formation.nom,
+        title: titre,
         color: colors.red,
         allDay: true,
         resizable: {
@@ -129,7 +130,6 @@ export class DemoComponent {
      this.events = this.eventList
      this.refresh.next()
   }
-
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -164,7 +164,13 @@ export class DemoComponent {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
+    var title = event?.title;
+    var Array = title.split(" ");
+    var id =Array[0];
+    var data = this.listsubscriptions.filter(arg =>arg.id == id)[0];
+    console.log(data);
+    
+    this.modalData = {data};
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 

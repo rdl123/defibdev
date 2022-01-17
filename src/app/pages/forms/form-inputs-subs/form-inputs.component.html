@@ -24,7 +24,7 @@
         <button nbButton nbStepperPrevious>prev</button>
         <button nbButton nbStepperNext>next</button>
       </nb-step>
-      <nb-step label="Chosiir un client">
+      <nb-step label="Chosir un client">
         <nb-select placeholder="Choisissez le client" (selectedChange)="onclientSelected($event)">
           <nb-option *ngFor="let option of listclients" value="{{ option.id }}">
             {{ option.nom }}
@@ -35,7 +35,18 @@
         <button nbButton nbStepperNext>next</button>
       </nb-step>
       <nb-step [label]="labelFour">
-        <ng-template #labelFour>Choisir la date de début</ng-template>
+        <ng-template #labelFour>Choisir le responsable</ng-template>
+        <nb-select placeholder="Choisissez le responsable" (selectedChange)="onresponsableSelected($event)">
+          <nb-option *ngFor="let option of listresponsables" value="{{ option.id }}">
+            {{ option.nom }} {{ option.prenon }}
+          </nb-option>
+        </nb-select>
+        <br/>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton  nbStepperNext>next</button>
+      </nb-step>
+      <nb-step [label]="labelFive">
+        <ng-template #labelFive>Choisir la date de début</ng-template>
         <div style ="margin-top: 26px;" >
           <input nbInput
           placeholder="Changer la date de début"
@@ -45,8 +56,8 @@
         <button nbButton nbStepperPrevious>prev</button>
         <button nbButton  nbStepperNext>next</button>
       </nb-step>
-      <nb-step [label]="labelFive">
-        <ng-template #labelFive>Choisir la date de fin</ng-template>
+      <nb-step [label]="labelSix">
+        <ng-template #labelSix>Choisir la date de fin</ng-template>
         <div style ="margin-top: 26px;" >
           <input nbInput
           placeholder="Changer la date de fin"

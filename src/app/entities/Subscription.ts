@@ -2,6 +2,7 @@
 import { Categorie } from './Categorie';
 import { Formateur } from './Formateur';
 import { Formation } from './Formation';
+import { Responsable } from './Responsable';
 
 export class Subscription { 
     id :number;
@@ -11,6 +12,7 @@ export class Subscription {
     client : Categorie;
     formateur : Formateur;
     formation : Formation;
+    responsable : Responsable
   
    }
 

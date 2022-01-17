@@ -21,6 +21,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/forms/inputs-formateur',
       },
       {
+        title: 'Ajouter Responsable',
+        link: '/pages/forms/inputs-responsable',
+      },
+      {
         title: 'Ajouter formation',
         link: '/pages/forms/inputs-formation',
       },
@@ -43,6 +47,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Formateurs',
         link: '/pages/tables/formateur-list',
+      },
+      {
+        title: 'Responsables',
+        link: '/pages/tables/responsables-list',
       },
       {
         title: 'Formations disponibles',

@@ -25,6 +25,8 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
 import {NbStepperModule} from '@nebular/theme';
 import { FormInputsFormateurComponent } from './form-inputs-formateur/form-inputs-formateur.component';
 import { FormInputsResponsableComponent } from './form-inputs-responsable/form-inputs-responsable.component';
+import { FormInputsParticipantComponent } from './form-inputs-participant/form-inputs-participant.component';
+
 
 @NgModule({
   imports: [
@@ -54,6 +56,7 @@ import { FormInputsResponsableComponent } from './form-inputs-responsable/form-i
     DatepickerComponent,
     FormInputsFormateurComponent,
     FormInputsResponsableComponent,
+    FormInputsParticipantComponent,
   ],
 })
 export class FormsModule { }

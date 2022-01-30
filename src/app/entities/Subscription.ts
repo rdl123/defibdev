@@ -5,7 +5,6 @@ import { Formation } from './Formation';
 import { Responsable } from './Responsable';
 
 export class Subscription { 
-    id :number;
     date_debut : string;
     date_fin : Date;
     description : string;

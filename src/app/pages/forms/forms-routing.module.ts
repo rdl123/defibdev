@@ -7,6 +7,7 @@ import { FormInputsFormationComponent } from './form-inputs-formation/form-input
 import { FormInputsSubsComponent } from './form-inputs-subs/form-inputs-subs.component';
 import { FormInputsFormateurComponent } from './form-inputs-formateur/form-inputs-formateur.component';
 import { FormInputsResponsableComponent } from './form-inputs-responsable/form-inputs-responsable.component';
+import { FormInputsParticipantComponent } from './form-inputs-participant/form-inputs-participant.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'inputs-formateur',
         component: FormInputsFormateurComponent,
+      },
+      {
+        path: 'inputs-participant',
+        component: FormInputsParticipantComponent,
       },
       {
         path: 'inputs-responsable',

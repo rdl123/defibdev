@@ -25,6 +25,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/forms/inputs-responsable',
       },
       {
+        title: 'Ajouter Participant',
+        link: '/pages/forms/inputs-participant',
+      },
+      {
         title: 'Ajouter formation',
         link: '/pages/forms/inputs-formation',
       },
@@ -51,6 +55,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Responsables',
         link: '/pages/tables/responsables-list',
+      },
+      {
+        title: 'Participants',
+        link: '/pages/tables/participant-list',
       },
       {
         title: 'Formations disponibles',

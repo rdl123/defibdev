@@ -9,6 +9,7 @@ import { SubscriptionslistComponent } from './subscriptions-list/subscriptions-l
 import { ResponsableListComponent } from './responsable-list/responsable-list.component';
 import {ClientDetailsComponent} from './client-details/client-details.component';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,6 +30,10 @@ const routes: Routes = [{
      {
       path: 'formateur-list',
       component: FormateurListComponent,
+    },
+    {
+      path: 'participant-list',
+      component: ParticipantListComponent,
     },
     {
       path: 'responsables-list',
@@ -55,5 +60,6 @@ export const routedComponents = [
   FormateurListComponent,
   FormationslistComponent,
   SubscriptionslistComponent,
+  ParticipantListComponent,
   ResponsableListComponent
 ];

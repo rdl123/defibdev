@@ -24,6 +24,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { ParticipantListComponent } from './participant-list/participant-list.component';
+
 @NgModule({
   imports: [
     NbActionsModule,
@@ -49,6 +51,8 @@ import {
     ...routedComponents,
     FsIconComponent,
     ClientDetailsComponent,
+    ParticipantListComponent,
+    
     
   ],
 })

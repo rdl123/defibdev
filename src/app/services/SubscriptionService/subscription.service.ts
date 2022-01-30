@@ -23,7 +23,7 @@ export class SubscriptionService {
   };
 
   addSubscription(subscription: Subscription) {
-    return this.http.post(API_URL + '/Subscription/add_Formation', subscription);
+    return this.http.post(API_URL + '/Subscription/add_Subscription', subscription);
   }
 
   editSubscription(subscription: Subscription) {

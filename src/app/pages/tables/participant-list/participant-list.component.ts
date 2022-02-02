@@ -64,8 +64,8 @@ export class ParticipantListComponent  {
         title: 'Email',
         type: 'string',
       },
-      ville: {
-        title: 'Ville',
+      matricule: {
+        title: 'Matricule',
         type: 'string',
       },
     },
@@ -162,7 +162,7 @@ export class ParticipantListComponent  {
       title: 'Rapport des Formateurs',
       useBom: true,
       noDownload: false,
-      headers: ["Identifient","Nom", "Prénom", "CIN", "GSM","Email"]
+      headers: ["Identifient","Nom", "Prénom", "CIN", "GSM","Email","matricule"]
     };
 
     new ngxCsv(this.listparticipants,"Rapport",options);

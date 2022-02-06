@@ -10,8 +10,8 @@
           </nb-option>
         </nb-select>
         <br/>
-        <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton disabled nbStepperNext>précédent</button>
+        <button nbButton nbStepperNext>suivant</button>
       </nb-step>
       <nb-step [label]="labelTwo">
         <ng-template #labelTwo>Choisir un formateur</ng-template>
@@ -21,8 +21,8 @@
           </nb-option>
         </nb-select>
         <br/>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton nbStepperPrevious>précédent</button>
+        <button nbButton nbStepperNext>suivant</button>
       </nb-step>
       <nb-step label="Chosir un client">
         <nb-select placeholder="Choisissez le client" (selectedChange)="onclientSelected($event)">
@@ -31,8 +31,8 @@
           </nb-option>
         </nb-select>
         <br/>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton nbStepperPrevious>précédent</button>
+        <button nbButton nbStepperNext>suivant</button>
       </nb-step>
       <nb-step [label]="labelFour">
         <ng-template #labelFour>Choisir le responsable</ng-template>
@@ -42,8 +42,8 @@
           </nb-option>
         </nb-select>
         <br/>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton  nbStepperNext>next</button>
+        <button nbButton nbStepperPrevious>précédent</button>
+        <button nbButton  nbStepperNext>suivant</button>
       </nb-step>
       <nb-step [label]="labelFive">
         <ng-template #labelFive>Choisir la date de début</ng-template>
@@ -53,8 +53,8 @@
           [nbDatepicker]="formpicker">
         <nb-datepicker #formpicker (dateChange)="onStartDateChanged($event)"></nb-datepicker>
         </div>  
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton  nbStepperNext>next</button>
+        <button nbButton nbStepperPrevious>précédent</button>
+        <button nbButton  nbStepperNext>suivant</button>
       </nb-step>
       <nb-step [label]="labelSix">
         <ng-template #labelSix>Choisir la date de fin</ng-template>
@@ -64,8 +64,8 @@
           [nbDatepicker]="formpicker2">
         <nb-datepicker #formpicker2 (dateChange)="onEndDateChanged($event)"></nb-datepicker>
         </div>  
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
+        <button nbButton nbStepperPrevious>précédent</button>
+        <button nbButton disabled nbStepperNext>suivant</button>
         <button type="submit" class="btn btn-primary" (click)="add()"> Programmer ma formation </button>
       </nb-step>
     </nb-stepper>

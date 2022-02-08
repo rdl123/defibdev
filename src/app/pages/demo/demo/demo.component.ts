@@ -24,6 +24,10 @@ import {
 } from 'angular-calendar';
 import {SubscriptionService} from '../../../services/SubscriptionService/subscription.service';
 import { title } from 'process';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+
  
 const colors: any = {
   red: {
@@ -100,7 +104,7 @@ export class DemoComponent {
   constructor(private modal: NgbModal,private subscriptionService: SubscriptionService) {}
 
   ngOnInit(){
-    
+    registerLocaleData(localeFr);
     this.subscriptionService.findAllSubscriptions().subscribe( data =>{
     this.listsubscriptions = data; 
     this.setEvents()
@@ -115,8 +119,8 @@ export class DemoComponent {
     this.listsubscriptions.map(item => {
       var titre : string = item.id + ' - ' + item.formation.nom;
       this.eventList.push( {
-        start: subDays(startOfDay(new Date()), 1),
-        end: addDays(new Date(), 1),
+        start: subDays(startOfDay(new Date(item.date_debut)), 1),
+        end: addDays(new Date(item.date_fin), 1),
         title: titre,
         color: colors.red,
         allDay: true,

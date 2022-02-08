@@ -86,6 +86,10 @@ export class SubscriptionslistComponent {
       formateur: {
         title: 'Nom du formateur',
         type: 'string',
+      },
+      responsable: {
+        title: 'Nom du responsable',
+        type: 'string',
       }
     },
   };
@@ -132,6 +136,7 @@ export class SubscriptionslistComponent {
         item.client =    item.client.nom;
         item.formateur = item.formateur.nom;
         item.formation = item.formation.nom;
+        item.responsable = item.responsable.nom;
     });
     this.source.load(this.listsubscriptionsformatted);
     })
@@ -163,7 +168,7 @@ export class SubscriptionslistComponent {
   }
   onCreate(e){
     console.log("add cusomized");
-    this.router.navigateByUrl('/pages/forms/inputs-formation');
+    this.router.navigateByUrl('/pages/forms/inputs-subs');
   }
   onDelete(e){
     console.log("delete clicked");
@@ -210,10 +215,12 @@ export class SubscriptionslistComponent {
     this.NewFormateurvalue = e;
   }
   onStartDateChanged(e){
+    e.setHours( e.getHours() + 1 );
     this.NewDateStart = e.toISOString().split('T')[0];
  
   }
   onendDateChanged(e){
+    e.setHours( e.getHours() + 1 );
     this.NewDateEnd = e.toISOString().split('T')[0];
   }
   Editer() {
@@ -267,10 +274,10 @@ export class SubscriptionslistComponent {
   title: 'Rapport des clients',
   useBom: true,
   noDownload: false,
-  headers: ["Identifient","Nom de la formation", "Date de début", "Date de fin", "Client","Formateur"]
+  headers: ["Identifient","Nom de la formation", "Date de début", "Date de fin", "Client","Formateur","Responsable"]
 };
 
-new ngxCsv(this.listsubscriptionsformatted,"Rapport",options);
+new ngxCsv(this.listsubscriptionsformatted,"Rapport des clients",options);
 }
 
 }

@@ -70,5 +70,11 @@
       </nb-step>
     </nb-stepper>
   </nb-card-body>
+  <div *ngIf="show_success">
+    <nb-alert status="info" >Formation programmée avec succes !</nb-alert>
+ </div>
+ <div *ngIf="show_warning">
+   <nb-alert status="danger" >Programmation de la formation a échoué !</nb-alert>
+</div>
 </nb-card>
 </div>

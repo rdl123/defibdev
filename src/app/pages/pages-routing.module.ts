@@ -32,7 +32,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'tables',
+      redirectTo: 'calendar',
       pathMatch: 'full',
     },
     {

@@ -6,7 +6,7 @@ import { Responsable } from './Responsable';
 
 export class Subscription { 
     date_debut : string;
-    date_fin : Date;
+    date_fin : string;
     description : string;
     client : Categorie;
     formateur : Formateur;

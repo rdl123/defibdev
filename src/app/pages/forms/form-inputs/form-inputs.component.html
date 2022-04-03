@@ -1,31 +1,20 @@
-
-    <nb-card>
-      <nb-card-header>AJOUTER CLIENT</nb-card-header>
-      <nb-card-body>
-         
-         
-
-          <div *ngIf="show_success">
-             <nb-alert status="info" >Client added successfully !</nb-alert>
-          </div>
-          <div *ngIf="show_warning">
-            <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
-         </div>
-         
-       
-          <input type="text" nbInput fullWidth shape="round" placeholder="NOM" [(ngModel)]="Client.nom">
-          <input type="text" nbInput fullWidth shape="round" placeholder="PRENOM" [(ngModel)]="Client.prenom">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="EMAIL" [(ngModel)]="Client.email">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="Client.gsm">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="Client.cin">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="VILLE" [(ngModel)]="Client.ville">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="Adresse" [(ngModel)]="Client.adresse">
-          <button type="submit" class="btn btn-primary" (click)="add()" > Ajouter </button>
-    
-         
-        
-       
-      </nb-card-body>
-     
-
-    </nb-card>
+<div class="div-centered">
+  <nb-card>
+    <nb-card-header>Ajouter un client</nb-card-header>
+    <nb-card-body>
+      <div *ngIf="show_success">
+        <nb-alert status="info">Client added successfully !</nb-alert>
+      </div>
+      <div *ngIf="show_warning">
+        <nb-alert status="danger">Quelque chose qui cloche, Réessayer !</nb-alert>
+      </div>
+      <input type="text" nbInput fullWidth placeholder="Intitulé" [(ngModel)]="Client.nom">
+      <input type="text" nbInput fullWidth placeholder="Email de contact" [(ngModel)]="Client.email">
+      <input type="text" nbInput fullWidth placeholder="GSM" [(ngModel)]="Client.gsm">
+      <input type="text" nbInput fullWidth placeholder="CIN" [(ngModel)]="Client.cin">
+      <input type="text" nbInput fullWidth placeholder="Ville" [(ngModel)]="Client.ville">
+      <input type="text" nbInput fullWidth placeholder="Adresse" [(ngModel)]="Client.adresse">
+      <button type="submit" class="btn btn-primary" (click)="add()"> Ajouter </button>
+    </nb-card-body>
+  </nb-card>
+</div>

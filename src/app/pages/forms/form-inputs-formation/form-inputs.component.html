@@ -1,34 +1,23 @@
+<div class = "div-centered">
+<nb-card>
+  <nb-card-header>Ajouter une formation</nb-card-header>
+  <nb-card-body>
+    <div *ngIf="show_success">
+      <nb-alert status="info">Formation ajoutée avec succées</nb-alert>
+    </div>
+    <div *ngIf="show_warning">
+      <nb-alert status="danger" >Quelque chose qui cloche, Réessayer !</nb-alert>
+    </div>
 
-    <nb-card>
-      <nb-card-header>Ajouter une formation</nb-card-header>
-      <nb-card-body>
-         
-         
-
-          <div *ngIf="show_success">
-             <nb-alert status="info" >Formation ajoutée avec succées</nb-alert>
-          </div>
-          <div *ngIf="show_warning">
-            <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
-         </div>
-         
-       
-          <input type="text" nbInput fullWidth shape="round" placeholder="Nom" [(ngModel)]="formation.nom">
-          <input type="text" nbInput fullWidth  shape="round" placeholder="Description" [(ngModel)]="formation.description" >
-          <nb-select selected="1"  (selectedChange)="onCategorieSelected($event)" >
-            <nb-option
-            *ngFor="let option of listcategorie"
-             value="{{ option.id }}">
-            {{ option.nom }}
-          </nb-option>
-          </nb-select>
-          <br/>
-          <button type="submit" class="btn btn-primary" (click)="add()" > Ajouter </button>
-    
-         
-        
-       
-      </nb-card-body>
-     
-
-    </nb-card>
+    <input type="text" nbInput fullWidth  placeholder="Nom" [(ngModel)]="formation.nom">
+    <input type="text" nbInput fullWidth  placeholder="Description" [(ngModel)]="formation.description">
+    <nb-select selected="1" (selectedChange)="onCategorieSelected($event)">
+      <nb-option *ngFor="let option of listcategorie" value="{{ option.id }}">
+        {{ option.nom }}
+      </nb-option>
+    </nb-select>
+    <br />
+    <button type="submit" class="btn btn-primary" (click)="add()"> Ajouter </button>
+  </nb-card-body>
+</nb-card>
+</div>

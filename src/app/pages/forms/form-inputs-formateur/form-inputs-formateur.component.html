@@ -1,23 +1,19 @@
-<nb-card>
+<div class="div-centered">
+<nb-card >
     <nb-card-header>Ajouter un formateur</nb-card-header>
     <nb-card-body>
-       
-       
-
         <div *ngIf="show_success">
            <nb-alert status="info" >Formateur ajouté avec succes !</nb-alert>
         </div>
         <div *ngIf="show_warning">
-          <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+          <nb-alert status="danger" >Quelque chose qui cloche, Réessayer !</nb-alert>
        </div>
-       
-     
-        <input type="text" nbInput fullWidth shape="round" placeholder="NOM" [(ngModel)]="Formateur.nom">
-        <input type="text" nbInput fullWidth shape="round" placeholder="PRENOM" [(ngModel)]="Formateur.prenom">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="EMAIL" [(ngModel)]="Formateur.email">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="Formateur.gsm">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="Formateur.cin">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="VILLE" [(ngModel)]="Formateur.ville">
+        <input type="text" nbInput fullWidth   placeholder="Nom" [(ngModel)]="Formateur.nom">
+        <input type="text" nbInput fullWidth   placeholder="Prénom" [(ngModel)]="Formateur.prenom">
+        <input type="text" nbInput fullWidth   placeholder="Email" [(ngModel)]="Formateur.email">
+        <input type="text" nbInput fullWidth   placeholder="GSM" [(ngModel)]="Formateur.gsm">
+        <input type="text" nbInput fullWidth   placeholder="CIN" [(ngModel)]="Formateur.cin">
+        <input type="text" nbInput fullWidth   placeholder="Ville" [(ngModel)]="Formateur.ville">
         <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
         <div *ngIf="!selectedFile" >
           <button style="margin-right: 15px;" (click)="fileInput.click()" class="btn btn-outline-primary" [(ngModel)]="Formateur.photo">Ajouter la photo</button>
@@ -29,14 +25,6 @@
           <br>
           <button style="margin-left: 90%;" type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
         </div>
-        
-        
-        
-  
-       
-      
-     
     </nb-card-body>
-   
-
   </nb-card>
+</div>

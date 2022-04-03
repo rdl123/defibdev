@@ -1,35 +1,21 @@
+<div class = "div-centered">
 <nb-card>
     <nb-card-header>Ajouter un participant</nb-card-header>
     <nb-card-body>
-       
-       
-
         <div *ngIf="show_success">
            <nb-alert status="info" >Participant ajouté avec succes !</nb-alert>
         </div>
         <div *ngIf="show_warning">
-          <nb-alert status="danger" >Something went wrong please retry !</nb-alert>
+          <nb-alert status="danger" >Quelque chose qui cloche, Réessayer !</nb-alert>
        </div>
-       
-     
-        <input type="text" nbInput fullWidth shape="round" placeholder="NOM" [(ngModel)]="participant.nom">
-        <input type="text" nbInput fullWidth shape="round" placeholder="PRENOM" [(ngModel)]="participant.prenom">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="EMAIL" [(ngModel)]="participant.email">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="GSM" [(ngModel)]="participant.gsm">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="CIN" [(ngModel)]="participant.cin">
-        <input type="text" nbInput fullWidth  shape="round" placeholder="Matricule" [(ngModel)]="participant.matricule">
-
+        <input type="text" nbInput fullWidth  placeholder="Nom" [(ngModel)]="participant.nom">
+        <input type="text" nbInput fullWidth  placeholder="Prénom" [(ngModel)]="participant.prenom">
+        <input type="text" nbInput fullWidth  placeholder="Email" [(ngModel)]="participant.email">
+        <input type="text" nbInput fullWidth  placeholder="GSM" [(ngModel)]="participant.gsm">
+        <input type="text" nbInput fullWidth  placeholder="CIN" [(ngModel)]="participant.cin">
+        <input type="text" nbInput fullWidth  placeholder="Matricule" [(ngModel)]="participant.matricule">
           <br>
-          <button style="margin-left: 90%;" type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
-
-        
-        
-        
-  
-       
-      
-     
+          <button  type="submit" class="btn btn-primary" (click)="add()" > Enregistrer </button>
     </nb-card-body>
-   
-
   </nb-card>
+</div>

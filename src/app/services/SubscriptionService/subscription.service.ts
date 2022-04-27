@@ -29,6 +29,9 @@ export class SubscriptionService {
   editSubscription(subscription: Subscription) {
     return this.http.patch(API_URL+'/Subscription/update',subscription);
   }
+  validateTraining(id: string) {
+    return this.http.post(API_URL+'/Subscription/validate',id);
+  }
 
   findAllSubscriptions() {
 

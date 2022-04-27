@@ -81,30 +81,39 @@ export class CalendarComponent {
       }
     }
     let uniqueArray = [];
-    uniqueArray = newArr.filter((obj, pos, arr) => {
-      return arr
-        .map(mapObj => mapObj.name)
-        .indexOf(obj.name) == pos;
+    uniqueArray = newArr.filter((thing, i, arr) => {
+      return arr.indexOf(arr.find(t => t.id === thing.id)) === i;
     });
     return uniqueArray;
 
   }
 
+  public onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
   public formatEvents(obj: any) {
     const newArr = [];
     var elm = {};
-    var _contains;
+    var isBlock;
+    var subject;
+    var description;
     for (let key in obj) {
       if (obj[key]) {
+        isBlock = obj[key].isConfirmed == 'Non' ? true : false;
+        subject = isBlock == true ?  obj[key].formation.nom + " (Non confirmée)" :  obj[key].formation.nom;
+        description = "Formation en : " + obj[key].formation.nom + ", animée par " + obj[key].formateur.nom + " " + obj[key].formateur.nom
+        + " du " + obj[key].date_debut +" à "  + obj[key].date_fin + " en faveur du client "+  obj[key].client.nom; 
         elm = {
           Id: obj[key].id,
-          Subject: obj[key].formation.nom,
-          // StartTime: new Date(obj[key].date_debut),
-          // EndTime: new Date(obj[key].date_fin),
-          StartTime: new Date(2021, 7, 2, 11, 0),
-          EndTime: new Date(2021, 7, 4, 10, 0),
+          Subject: subject,
+          StartTime: new Date(obj[key].date_debut),
+           EndTime: new Date(obj[key].date_fin),
+          //StartTime: new Date(2021, 7, 2, 11, 0),
+          //EndTime: new Date(2021, 7, 4, 10, 0),
           IsAllDay: false,
-          EmployeeId: obj[key].formateur.id
+          EmployeeId: obj[key].formateur.id,
+          IsBlock: false,
+          Description: description,
         }
         newArr.push(elm);
 

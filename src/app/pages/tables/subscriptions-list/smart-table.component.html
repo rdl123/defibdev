@@ -91,8 +91,9 @@
        </form>
     <br/>
      <nb-card-footer>
-       <button nbButton (click)="ref.close()">Fermer</button>
+       <button *ngIf="editSubscription.isConfirmed==='Non'" style ="margin-right: 2%"  class="btn btn-secondary" (click)="ValiderFormation(editSubscription.id)">Confirmer la formation</button>
        <button style ="margin-left: 2%" class="btn btn-primary" (click)="Editer()" >Enregistrer</button>
+       <button style ="margin-left: 2%" nbButton (click)="ref.close()">Fermer</button>
      </nb-card-footer>
    </nb-card>
 </div>

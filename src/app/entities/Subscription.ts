@@ -11,7 +11,8 @@ export class Subscription {
     client : Categorie;
     formateur : Formateur;
     formation : Formation;
-    responsable : Responsable
+    responsable : Responsable;
+    isConfirmed : string;
   
    }
 

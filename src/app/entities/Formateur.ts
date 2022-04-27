@@ -6,4 +6,5 @@ export class Formateur {
  email : string;
  ville : string;
  photo: string;
+ color : string;
    }

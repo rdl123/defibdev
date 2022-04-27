@@ -18,6 +18,7 @@ export class FormInputsFormateurComponent {
     show_warning:  boolean;
     selectedFile: File;
     imgURL : any
+  public color: string = '#2889e9';
   constructor(private formateurService : FormateurService,private fileService : FileService) { 
     this.Formateur = new Formateur();
   }
@@ -28,6 +29,10 @@ onFileChanged(event) {
      reader.onload = (_event) => { 
        this.imgURL = reader.result; 
      }
+  }
+  public onChangeColor(color: string): void {
+    console.log('Color changed:', color);
+    this.Formateur.color = color;
   }
 
  add() {

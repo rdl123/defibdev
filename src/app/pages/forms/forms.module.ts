@@ -26,7 +26,7 @@ import {NbStepperModule} from '@nebular/theme';
 import { FormInputsFormateurComponent } from './form-inputs-formateur/form-inputs-formateur.component';
 import { FormInputsResponsableComponent } from './form-inputs-responsable/form-inputs-responsable.component';
 import { FormInputsParticipantComponent } from './form-inputs-participant/form-inputs-participant.component';
-
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -45,6 +45,7 @@ import { FormInputsParticipantComponent } from './form-inputs-participant/form-i
     NbAlertModule,
     ngFormsModule,
     NbStepperModule,
+    ColorPickerModule
   ],
   declarations: [
     FormsComponent,
